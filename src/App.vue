@@ -5,7 +5,7 @@
       <h2 id="display">{{sound}}</h2>
       <section id="pad-section">
         <article class='drum-pad drum-pad--1'
-          data-key="81" @click="playAudio"
+          data-key="81" @click="clickEvent"
         >
           <audio
             id="Q"
@@ -17,7 +17,7 @@
           <span class="audio-sound">Tron</span>
         </article>
         <article class='drum-pad drum-pad--2'
-          data-key="87"
+          data-key="87" @click="clickEvent"
         >
           <audio
             id="W"
@@ -29,7 +29,7 @@
           <span class="audio-sound">Tribal</span>
         </article>
         <article class='drum-pad drum-pad--3'
-          data-key="69"
+          data-key="69" @click="clickEvent"
         >
           <audio
             id="E"
@@ -41,7 +41,7 @@
           <span class="audio-sound">Acoustic Hat</span>
         </article>
         <article class='drum-pad drum-pad--4'
-          data-key="65"
+          data-key="65" @click="clickEvent"
         >
           <audio
             id="A"
@@ -53,7 +53,7 @@
           <span class="audio-sound">Snare Vinyl</span>
         </article>
         <article class='drum-pad drum-pad--5'
-          data-key="83"
+          data-key="83" @click="clickEvent"
         >
           <audio
             id="S"
@@ -65,7 +65,7 @@
           <span class="audio-sound">Tom FM</span>
         </article>
         <article class='drum-pad drum-pad--6'
-          data-key="68"
+          data-key="68" @click="clickEvent"
         >
           <audio
             id="D"
@@ -77,7 +77,7 @@
           <span class="audio-sound">Tom Rototom</span>
         </article>
         <article class='drum-pad drum-pad--7'
-          data-key="90"
+          data-key="90" @click="clickEvent"
         >
           <audio
             id="Z"
@@ -89,7 +89,7 @@
           <span class="audio-sound">Clap Crushed</span>
         </article>
         <article class='drum-pad drum-pad--8'
-          data-key="88"
+          data-key="88" @click="clickEvent"
         >
           <audio
             id="X"
@@ -101,7 +101,7 @@
           <span class="audio-sound">Cultivator</span>
         </article>
         <article class='drum-pad drum-pad--9'
-          data-key="67"
+          data-key="67" @click="clickEvent"
         >
           <audio
             id="C"
@@ -135,49 +135,52 @@ export default {
 
       //If the audio isn't found, return
       if(!audio) return;
-      key.classList.add('pulse');
+
       //Set startTime at 0 & play
       audio.startTime = 0;
       audio.play();
       this.sound = display.textContent;
     },
+    clickEvent(e) {
+      let num = { keyCode: e.target.dataset.key };
+      this.playAudio(num);
+    },
 
-    removeTransition(e) {
-      /* disable es-lint */
-      console.log('This fires' + e)
-      if(e.propertyName !== 'transform') return;
-      e.target.classList.remove('pulse');
-    }
   },
   created () {
     let keys = Array.from(document.querySelectorAll('.drum-pad'));
-    keys.forEach(key => key.addEventListener('transitionend', this.removeTransition))
+    keys.forEach(key => key.addEventListener('click', this.clickEvent))
     window.addEventListener('keyup', this.playAudio)
   },
   beforeDestory () {
     //Do something
-
+    document.removeEventListener('keyup', this.playAudio)
   }
 }
 </script>
 
 <style lang="scss">
+h2 {
+  color: #f3f3f3;
+  min-height: 20px;
+}
 kbd {
   opacity: 0.45;
   font-size: 80px;
   color: #BA274A;
   text-shadow: 2px 4px 4px rgba(12,12,13,0.1);
   text-align: center;
+  position: relative;
+  z-index: -5;
 }
-h2 {
-  color: #f3f3f3;
-  min-height: 20px;
-}
+
 span.audio-sound {
   display: block;
   text-align: center;
   color: #f3f3f3;
   font-size: 0.88rem;
+  display: relative;
+  z-index: -5;
 }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -185,7 +188,6 @@ span.audio-sound {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   margin-top: 60px;
-
 }
 
 body {
@@ -198,7 +200,6 @@ h1 {
   font-size: 3.5rem;
 }
 
-
 #pad-section {
   display: grid;
   grid-template-columns: 1fr repeat(3, minmax(100px, 150px)) 1fr;
@@ -210,65 +211,43 @@ h1 {
   // box-shadow: 2px 4px 4px rgba(12,12,13,0.1);
   background-color: #841C26;
   cursor: pointer;
+  position: relative;
+  z-index: 10;
 
   &--1 {
     grid-row: 1 / 2;
     grid-column: 2 / 3;
-
   }
   &--2 {
     grid-row: 1 / 2;
     grid-column: 3 / 4;
-
   }
   &--3 {
     grid-row: 1 / 2;
     grid-column: 4 / 5;
-
   }
   &--4 {
     grid-row: 2 / 3;
     grid-column: 2 / 3;
-
   }
   &--5 {
     grid-row: 2 / 3;
     grid-column: 3 / 4;
-
   }
   &--6 {
     grid-row: 2 / 3;
     grid-column: 4 / 5;
-
   }
   &--7 {
     grid-row: 3 / 4;
     grid-column: 2 / 3;
-
   }
   &--8 {
     grid-row: 3 / 4;
     grid-column: 3 / 4;
-
   }
   &--9 {
     grid-row: 3 / 4;
     grid-column: 4 / 5;
-
   }
-}
-
-.pulse {
-  animation: pulse 1s;
-  box-shadow: 0 0 0 2em rgba(#fff, 0);
-}
-
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 #BA274A;
-  }
-}
-
-
-
-</style>
+}</style>
