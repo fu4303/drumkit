@@ -11,7 +11,7 @@
             id="Q"
             class="clip"
             data-key="81"
-            src="/samples/kick-tron.wav">
+            src="/drumkit/samples/kick-tron.wav">
           </audio>
           <kbd>Q</kbd>
           <span class="audio-sound">Tron</span>
@@ -22,7 +22,7 @@
           <audio
             id="W"
             class="clip"
-            src="/samples/perc-tribal.wav"
+            src="/drumkit/samples/perc-tribal.wav"
             data-key="87">
           </audio>
           <kbd>W</kbd>
@@ -34,7 +34,7 @@
           <audio
             id="E"
             class="clip"
-            src="/samples/openhat-acoustic01.wav"
+            src="/drumkit/samples/openhat-acoustic01.wav"
             data-key="69">
           </audio>
           <kbd>E</kbd>
@@ -46,7 +46,7 @@
           <audio
             id="A"
             class="clip"
-            src="/samples/snare-vinyl02.wav"
+            src="/drumkit/samples/snare-vinyl02.wav"
             data-key="65">
           </audio>
           <kbd>A</kbd>
@@ -58,7 +58,7 @@
           <audio
             id="S"
             class="clip"
-            src="/samples/tom-fm.wav"
+            src="/drumkit/samples/tom-fm.wav"
             data-key="83">
           </audio>
           <kbd>S</kbd>
@@ -70,7 +70,7 @@
           <audio
             id="D"
             class="clip"
-            src="/samples/tom-rototom.wav"
+            src="/drumkit/samples/tom-rototom.wav"
             data-key="68">
           </audio>
           <kbd>D</kbd>
@@ -82,7 +82,7 @@
           <audio
             id="Z"
             class="clip"
-            src="/samples/clap-crushed.wav"
+            src="/drumkit/samples/clap-crushed.wav"
             data-key="90">
           </audio>
           <kbd>Z</kbd>
@@ -94,7 +94,7 @@
           <audio
             id="X"
             class="clip"
-            src="/samples/kick-cultivator.wav"
+            src="/drumkit/samples/kick-cultivator.wav"
             data-key="88">
           </audio>
           <kbd>X</kbd>
@@ -106,7 +106,7 @@
           <audio
             id="C"
             class="clip"
-            src="/samples/kick-newwave.wav"
+            src="/drumkit/samples/kick-newwave.wav"
             data-key="67">
           </audio>
           <kbd>C</kbd>
