@@ -1,0 +1,18 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: monthly
+    time: "10:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: "@vue/cli-plugin-babel"
+    versions:
+    - 4.5.9
+  - dependency-name: "@vue/cli-service"
+    versions:
+    - 4.5.9
+  - dependency-name: elliptic
+    versions:
+    - 6.5.3
